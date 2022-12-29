@@ -1,0 +1,15 @@
+# this is an auto generated file. This will be overwritten
+mutation AddSampleData($id: ID!, $value: String!) {
+  addSampleData(id: $id, value: $value) {
+    id
+    value
+    datetime
+  }
+}
+mutation AddSampleData1($id: ID!, $value: String!) {
+  addSampleData1(id: $id, value: $value) {
+    id
+    value
+    datetime
+  }
+}
