@@ -13,8 +13,9 @@
                 <div class="media card-body" style="padding: 0px;">
                   <div class="media-body align-self-center">
                     <div>
-                      <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending}}</span></p>
+                      <p style="font-size: 16px; font-weight: 1000;">Daily </p> 
+                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending}}</span></p>
+                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
@@ -36,7 +37,8 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p style="font-size: 16px;"><span class="counter" style="font-weight: 800;">36</span></p>
+                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending1}}</span></p>
+                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending1}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
@@ -58,7 +60,8 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p style="font-size: 16px;"><span class="counter" style="font-weight: 800;">36</span></p>
+                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending}}</span></p>
+                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
@@ -77,16 +80,16 @@
       </div>
     </div>
     <div class="card-body" style="padding: 4px;">
-      <div class="row">
+      <!-- <div class="row"> -->
         <div class="u-steps row">
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">1</span>
-            <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">CHECK CUSTOMER PHONE</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">1</span>
+            <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">CHECK CUST PHONE</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -98,9 +101,9 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td style="padding: 1px;">100</td>
-                          <td style="padding: 1px;">50</td>
-                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 1}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 10}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 22}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -121,14 +124,14 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">2</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">2</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">SUBMIT EKYC</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -140,9 +143,9 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td style="padding: 1px;">100</td>
-                          <td style="padding: 1px;">50</td>
-                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 4}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 20}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 11}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -163,14 +166,14 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">3</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">3</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">CHECK KYC STATUS</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -182,9 +185,9 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td style="padding: 1px;">100</td>
-                          <td style="padding: 1px;">50</td>
-                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">{{totalCusAttending}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -205,14 +208,14 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">4</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">4</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">VIDEO STATEMENT</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -224,9 +227,9 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td style="padding: 1px;">100</td>
-                          <td style="padding: 1px;">50</td>
-                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 1}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending + 1}}</td>
+                          <td style="padding: 1px;">{{totalCusAttending}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -247,14 +250,14 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">5</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">5</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">GET CONTRACT</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -289,14 +292,14 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-2" style="padding: 12px 2px;"><span class="u-step-number">6</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">6</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">SIGN CONTRACT</span>
             </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card">
                   <div class="table-responsive">
-                    <table class="table table-xs">
+                    <table class="table table-xs text-center">
                       <thead>
                         <tr>
                           <th scope="col" style="padding: 1px;"></th>
@@ -332,7 +335,7 @@
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>

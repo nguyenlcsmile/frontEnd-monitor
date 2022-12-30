@@ -14422,7 +14422,7 @@ body {
   font-size: 90%; }
 
 .table-xs th, .table-xs td {
-  padding: 0.2rem 2rem;
+  padding: 0.2rem 1rem;
   /* font-size: 0.5rem;  */
 }
 
