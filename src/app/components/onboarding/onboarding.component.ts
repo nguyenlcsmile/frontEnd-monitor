@@ -46,11 +46,11 @@ export class OnboardingComponent implements OnInit {
 
     ngAfterViewInit() {
         let value = this.addValueOnboarding('ONBOARDING', 'ATTENDING');
-        // console.log(value);
-        this.store.select(state => state.information).subscribe(
-            data => this.value = data
-        );
-        console.log(this.value);
+        console.log(value);
+        this.getValueOnboarding();
+        let value1 = this.addValueOnboarding('ONBOARDING', 'ATTENDING');
+        console.log(value1);
+        this.getValueOnboarding1();
     }
 
     addValueOnboarding(nameBoard, nameBox) {
@@ -78,6 +78,20 @@ export class OnboardingComponent implements OnInit {
         }
     });
         return this.state.value;
+    }
+
+    getValueOnboarding() {
+        this.store.select(state => state.information).subscribe(
+            data => this.value = data
+        );
+        console.log(this.value);
+    }
+
+    getValueOnboarding1() {
+        this.store.select(state => state.information).subscribe(
+            data => this.value = data
+        );
+        console.log(this.value);
     }
 
 
