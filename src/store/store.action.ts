@@ -1,5 +1,5 @@
-import { Information } from "./information";
+import { OnBoarding } from "./information";
 
 export interface AppState {
-    readonly information: Information[];
+    readonly inforBoxOnboarding: OnBoarding[];
 }

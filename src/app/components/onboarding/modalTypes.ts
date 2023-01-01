@@ -1,8 +1,4 @@
-export interface OnBoarding {
-    readonly nameBox: string;
-    readonly phoneCustomers: any;
-    readonly url: string;
-    readonly usernames: any;
+export interface CHECK_CUST_PHONE {
     readonly daily: {
         total: number,
         success: number,

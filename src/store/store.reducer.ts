@@ -1,34 +1,17 @@
-// import { createReducer, on } from "@ngrx/store";
-// import { saveData } from "./store.action";
-
-// export interface Product {
-//     name: string;
-//     price: number;
-// }
-
-// export const totalData = {
-//     'dashboard': '',
-//     'detail': {
-//         'eventCode': '',
-//         'data': ''
-//     }
-// };
-
-// export const saveDataReducer = createReducer(
-//     totalData,
-//     on(saveData, (data) => {
-//         return {...totalData, data}
-//     })
-// )
-
 import { Action } from '@ngrx/store';
-import { Information } from './information';
+import { OnBoarding } from './information';
 
-export function addInformationReducer(state: Information[] = [], action) {
+export function addInformationReducer(state: OnBoarding[] = [], action) {
     switch (action.type) {
-        case 'ONBOARDING':
-            return [...state, action.payload];
+        case 'OnBoarding':
+            if (action.index !== undefined) {
+                return [...state, action.payload].filter(item => {
+                    return item !== state[action.index]
+                })
+            } else {
+                return [...state, action.payload];
+            }
         default:
             return state;
-        }
+    }
 }
