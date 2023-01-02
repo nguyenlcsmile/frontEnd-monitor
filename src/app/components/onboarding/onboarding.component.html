@@ -102,8 +102,9 @@
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
                           <td style="padding: 1px;">{{totalCusAttending + 1}}</td>
-                          <td style="padding: 1px;">{{totalCusAttending + 10}}</td>
-                          <td style="padding: 1px;">{{totalCusAttending + 22}}</td>
+                          <td *ngIf="checkCustPhone[0] && color===true" style="padding: 1px; color: red;">{{checkCustPhone[0].daily.success}}</td>
+                          <td *ngIf="checkCustPhone[0] && color===false" style="padding: 1px;">{{checkCustPhone[0].daily.success}}</td>
+                          <td *ngIf="checkCustPhone[0]" style="padding: 1px;">{{checkCustPhone[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -270,8 +271,8 @@
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
                           <td style="padding: 1px;">100</td>
-                          <td style="padding: 1px;">50</td>
-                          <td style="padding: 1px;">50</td>
+                          <td *ngIf="getContract[0]" style="padding: 1px;">{{getContract[0].daily.success}}</td>
+                          <td *ngIf="getContract[0]" style="padding: 1px;">{{getContract[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>

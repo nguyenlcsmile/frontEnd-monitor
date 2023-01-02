@@ -1,8 +1,6 @@
 export interface OnBoarding {
     readonly nameBox: string;
-    readonly phoneCustomers: any;
-    readonly url: string;
-    readonly usernames: any;
+    readonly detailCustomers: any;
     readonly daily: {
         total: number,
         success: number,

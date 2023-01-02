@@ -1,15 +1,33 @@
 export interface CHECK_CUST_PHONE {
-    readonly daily: {
+    daily: {
         total: number,
         success: number,
         failure: number,
     };
-    readonly week: {
+    week: {
         total: number,
         success: number
         failure: number,
     };
-    readonly month: {
+    month: {
+        total: number,
+        success: number
+        failure: number,
+    }
+}
+
+export interface GET_CONTRACT {
+    daily: {
+        total: number,
+        success: number,
+        failure: number,
+    };
+    week: {
+        total: number,
+        success: number
+        failure: number,
+    };
+    month: {
         total: number,
         success: number
         failure: number,
