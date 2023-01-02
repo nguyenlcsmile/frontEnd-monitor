@@ -10,8 +10,8 @@ import { SystemErrorComponent } from './components/system-error/system-error.com
 import { FunctionalsComponent } from './components/functionals/functionals.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { StoreModule } from '@ngrx/store';
-// import { saveDataReducer } from 'src/store/store.reducer';
 import { addInformationReducer } from 'src/store/store.reducer';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { addInformationReducer } from 'src/store/store.reducer';
       logOnly: environment.production,
     }),
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
