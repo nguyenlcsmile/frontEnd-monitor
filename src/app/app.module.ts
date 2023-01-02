@@ -11,7 +11,6 @@ import { FunctionalsComponent } from './components/functionals/functionals.compo
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { StoreModule } from '@ngrx/store';
 import { addInformationReducer } from 'src/store/store.reducer';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
       logOnly: environment.production,
     }),
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
