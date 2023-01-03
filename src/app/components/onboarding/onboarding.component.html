@@ -14,17 +14,16 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p> 
-                      <p *ngIf="attending[0] && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{attending[0].detailCustomers.length}}</span></p>
-                      <p *ngIf="attending[0] && color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{attending[0].detailCustomers.length}}</span></p>
-                      <p *ngIf="attending[0].length === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{attending[0].detailCustomers.length}}</span></p>
+                      <p *ngIf="userAttending.length === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
+                      <p *ngIf="userAttending.length !== 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{userAttending.length}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
-                      <p style="font-size: 16px;"><span class="counter">96</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Week </p>
-                      <p style="font-size: 16px;"><span class="counter">46</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                   </div>
                 </div>
@@ -38,17 +37,16 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p *ngIf="dailyDataOnboarding.success !== 0 && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{dailyDataOnboarding.success}}</span></p>
-                      <p *ngIf="dailyDataOnboarding.success !== 0 && color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{dailyDataOnboarding.success}}</span></p>
-                      <p *ngIf="dailyDataOnboarding.success === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
+                      <p *ngIf="userPassOnboarding.length === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
+                      <p *ngIf="userPassOnboarding.length !== 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{userPassOnboarding.length}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
-                      <p style="font-size: 16px;"><span class="counter">96</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Week </p>
-                      <p style="font-size: 16px;"><span class="counter">46</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                   </div>
                 </div>
@@ -62,17 +60,16 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p *ngIf="dailyDataOnboarding.failure !== 0 && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{dailyDataOnboarding.failure}}</span></p>
-                      <p *ngIf="dailyDataOnboarding.failure !== 0 &&color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{dailyDataOnboarding.failure}}</span></p>
-                      <p *ngIf="dailyDataOnboarding.failure === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
+                      <p *ngIf="userFailureOnboarding.length === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
+                      <p *ngIf="userFailureOnboarding.length !== 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{userFailureOnboarding.length}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
-                      <p style="font-size: 16px;"><span class="counter">96</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Week </p>
-                      <p style="font-size: 16px;"><span class="counter">46</span></p>
+                      <p style="font-size: 16px;"><span class="counter">0</span></p>
                     </div>
                   </div>
                 </div>
@@ -104,12 +101,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="checkCustPhone[0] && color===true" style="padding: 1px; color: red;">{{checkCustPhone[0].daily.total}}</td>
-                          <td *ngIf="checkCustPhone[0] && color===false" style="padding: 1px;">{{checkCustPhone[0].daily.total}}</td>
-                          <td *ngIf="checkCustPhone[0] && color===true" style="padding: 1px; color: red;">{{checkCustPhone[0].daily.success}}</td>
-                          <td *ngIf="checkCustPhone[0] && color===false" style="padding: 1px;">{{checkCustPhone[0].daily.success}}</td>
-                          <td *ngIf="checkCustPhone[0] && color===true" style="padding: 1px; color: red;">{{checkCustPhone[0].daily.failure}}</td>
-                          <td *ngIf="checkCustPhone[0] && color===false" style="padding: 1px;">{{checkCustPhone[0].daily.failure}}</td>
+                          <td *ngIf="checkCustPhone.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkCustPhone.length !== 0" style="padding: 1px;">{{checkCustPhone[0].detailCustomers.length}}</td>
+                          <td *ngIf="checkCustPhone.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkCustPhone.length !== 0" style="padding: 1px;">{{checkCustPhone[0].daily.success}}</td>
+                          <td *ngIf="checkCustPhone.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkCustPhone.length !== 0" style="padding: 1px;">{{checkCustPhone[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -149,12 +146,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="submitEKYC[0] && color===true" style="padding: 1px; color: red;">{{submitEKYC[0].daily.total}}</td>
-                          <td *ngIf="submitEKYC[0] && color===false" style="padding: 1px;">{{submitEKYC[0].daily.total}}</td>
-                          <td *ngIf="submitEKYC[0] && color===true" style="padding: 1px; color: red;">{{submitEKYC[0].daily.success}}</td>
-                          <td *ngIf="submitEKYC[0] && color===false" style="padding: 1px;">{{submitEKYC[0].daily.success}}</td>
-                          <td *ngIf="submitEKYC[0] && color===true" style="padding: 1px; color: red;">{{submitEKYC[0].daily.failure}}</td>
-                          <td *ngIf="submitEKYC[0] && color===false" style="padding: 1px;">{{submitEKYC[0].daily.failure}}</td>
+                          <td *ngIf="submitEKYC.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="submitEKYC.length !== 0" style="padding: 1px;">{{submitEKYC[0].detailCustomers.length}}</td>
+                          <td *ngIf="submitEKYC.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="submitEKYC.length !== 0" style="padding: 1px;">{{submitEKYC[0].daily.success}}</td>
+                          <td *ngIf="submitEKYC.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="submitEKYC.length !== 0" style="padding: 1px;">{{submitEKYC[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -194,12 +191,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="checkKYCStatus[0] && color===true" style="padding: 1px; color: red;">{{checkKYCStatus[0].daily.total}}</td>
-                          <td *ngIf="checkKYCStatus[0] && color===false" style="padding: 1px;">{{checkKYCStatus[0].daily.total}}</td>
-                          <td *ngIf="checkKYCStatus[0] && color===true" style="padding: 1px; color: red;">{{checkKYCStatus[0].daily.success}}</td>
-                          <td *ngIf="checkKYCStatus[0] && color===false" style="padding: 1px;">{{checkKYCStatus[0].daily.success}}</td>
-                          <td *ngIf="checkKYCStatus[0] && color===true" style="padding: 1px; color: red;">{{checkKYCStatus[0].daily.failure}}</td>
-                          <td *ngIf="checkKYCStatus[0] && color===false" style="padding: 1px;">{{checkKYCStatus[0].daily.failure}}</td>
+                          <td *ngIf="checkKYCStatus.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkKYCStatus.length !== 0" style="padding: 1px;">{{checkKYCStatus[0].detailCustomers.length}}</td>
+                          <td *ngIf="checkKYCStatus.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkKYCStatus.length !== 0" style="padding: 1px;">{{checkKYCStatus[0].daily.success}}</td>
+                          <td *ngIf="checkKYCStatus.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="checkKYCStatus.length !== 0" style="padding: 1px;">{{checkKYCStatus[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -239,12 +236,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="videoStatement[0] && color===true" style="padding: 1px; color: red;">{{videoStatement[0].daily.total}}</td>
-                          <td *ngIf="videoStatement[0] && color===false" style="padding: 1px;">{{videoStatement[0].daily.total}}</td>
-                          <td *ngIf="videoStatement[0] && color===true" style="padding: 1px; color: red;">{{videoStatement[0].daily.success}}</td>
-                          <td *ngIf="videoStatement[0] && color===false" style="padding: 1px;">{{videoStatement[0].daily.success}}</td>
-                          <td *ngIf="videoStatement[0] && color===true" style="padding: 1px; color: red;">{{videoStatement[0].daily.failure}}</td>
-                          <td *ngIf="videoStatement[0] && color===false" style="padding: 1px;">{{videoStatement[0].daily.failure}}</td>
+                          <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">{{videoStatement[0].detailCustomers.length}}</td>
+                          <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">{{videoStatement[0].daily.success}}</td>
+                          <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">{{videoStatement[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -284,12 +281,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="getContract[0] && color===true" style="padding: 1px; color: red;">{{getContract[0].daily.total}}</td>
-                          <td *ngIf="getContract[0] && color===false" style="padding: 1px;">{{getContract[0].daily.total}}</td>
-                          <td *ngIf="getContract[0] && color===true" style="padding: 1px; color: red;">{{getContract[0].daily.success}}</td>
-                          <td *ngIf="getContract[0] && color===false" style="padding: 1px;">{{getContract[0].daily.success}}</td>
-                          <td *ngIf="getContract[0] && color===true" style="padding: 1px; color: red;">{{getContract[0].daily.failure}}</td>
-                          <td *ngIf="getContract[0] && color===false" style="padding: 1px;">{{getContract[0].daily.failure}}</td>
+                          <td *ngIf="getContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="getContract.length !== 0" style="padding: 1px;">{{getContract[0].detailCustomers.length}}</td>
+                          <td *ngIf="getContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="getContract.length !== 0" style="padding: 1px;">{{getContract[0].daily.success}}</td>
+                          <td *ngIf="getContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="getContract.length !== 0" style="padding: 1px;">{{getContract[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>
@@ -329,12 +326,12 @@
                       <tbody>
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
-                          <td *ngIf="signContract[0] && color===true" style="padding: 1px; color: red;">{{signContract[0].daily.total}}</td>
-                          <td *ngIf="signContract[0] && color===false" style="padding: 1px;">{{signContract[0].daily.total}}</td>
-                          <td *ngIf="signContract[0] && color===true" style="padding: 1px; color: red;">{{signContract[0].daily.success}}</td>
-                          <td *ngIf="signContract[0] && color===false" style="padding: 1px;">{{signContract[0].daily.success}}</td>
-                          <td *ngIf="signContract[0] && color===true" style="padding: 1px; color: red;">{{signContract[0].daily.failure}}</td>
-                          <td *ngIf="signContract[0] && color===false" style="padding: 1px;">{{signContract[0].daily.failure}}</td>
+                          <td *ngIf="signContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="signContract.length !== 0" style="padding: 1px;">{{signContract[0].detailCustomers.length}}</td>
+                          <td *ngIf="signContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="signContract.length !== 0" style="padding: 1px;">{{signContract[0].daily.success}}</td>
+                          <td *ngIf="signContract.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="signContract.length !== 0" style="padding: 1px;">{{signContract[0].daily.failure}}</td>
                         </tr>
                         <tr>
                           <th scope="row" style="padding: 1px;">Week</th>

@@ -11,7 +11,7 @@ projects:
         generatedFileName: src/app/API.service.ts
         docsFilePath: src/graphql
         region: us-east-1
-        apiId: 57rbsznr2zf5xh7w6nrmve5xmy
+        apiId: bqmfwxryu5b6zc2i3qzw2yymja
         frontend: javascript
         framework: angular
         maxDepth: 2

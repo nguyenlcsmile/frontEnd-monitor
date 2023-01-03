@@ -1,14 +1,6 @@
 # this is an auto generated file. This will be overwritten
 subscription SubscribeToNewMessage($filter: ModelSubscriptionTodoFilterInput) {
   subscribeToNewMessage(filter: $filter) {
-    id
-    value
-    datetime
-  }
-}
-subscription SubscribeToNewMessage1($filter: ModelSubscriptionTodoFilterInput) {
-  subscribeToNewMessage1(filter: $filter) {
-    id
     value
     datetime
   }
