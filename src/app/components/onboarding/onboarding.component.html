@@ -14,8 +14,9 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p> 
-                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending}}</span></p>
-                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending}}</span></p>
+                      <p *ngIf="attending[0] && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{attending[0].detailCustomers.length}}</span></p>
+                      <p *ngIf="attending[0] && color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{attending[0].detailCustomers.length}}</span></p>
+                      <p *ngIf="attending[0].length === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{attending[0].detailCustomers.length}}</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
@@ -37,8 +38,9 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending1}}</span></p>
-                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending1}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.success !== 0 && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{dailyDataOnboarding.success}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.success !== 0 && color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{dailyDataOnboarding.success}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.success === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
@@ -60,8 +62,9 @@
                   <div class="media-body align-self-center">
                     <div>
                       <p style="font-size: 16px; font-weight: 1000;">Daily </p>
-                      <p *ngIf="color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{totalCusAttending}}</span></p>
-                      <p *ngIf="color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{totalCusAttending}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.failure !== 0 && color===true" style="font-size: 16px;"><span class="counter" style="font-weight: 800; color: red;">{{dailyDataOnboarding.failure}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.failure !== 0 &&color===false" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">{{dailyDataOnboarding.failure}}</span></p>
+                      <p *ngIf="dailyDataOnboarding.failure === 0" style="font-size: 16px;"><span class="counter" style="font-weight: 800;">0</span></p>
                     </div>
                     <div>
                       <p style="font-size: 16px;">Month </p>
