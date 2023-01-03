@@ -22,17 +22,7 @@ export class OnboardingComponent implements OnInit {
     getContract: OnBoarding[] = [];
     attending: OnBoarding[] = [];
     passOnboarding: OnBoarding[] = [];
-
-    phonePassOnboarding: any = [];
-    cifIdPassOnboarding: any = [];
     userPassOnboarding: any = [];
-
-    phoneFailureOnboarding: any = [];
-    cifIdFailureOnboarding: any = [];
-    userFailureOnboarding: any = [];
-
-    phoneAttending: any = [];
-    cifIdAttenfing: any = [];
     userAttending: any = [];
 
     constructor(
@@ -89,12 +79,12 @@ export class OnboardingComponent implements OnInit {
         this.api.SubscribeToNewMessageListener().subscribe({
             next: (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
-                console.log(JSON.parse(newData.value));
+
                 this.getValueOnboarding();
                 this.addValueOnboarding(this.valueOnboarding, JSON.parse(newData.value));
                 this.valueOnboarding.map((item, index) => {
-                    this.attending = [item];
                     if (item.nameBox === 'Check Customer Phone') {
+                        this.attending = [item];
                         this.checkCustPhone = [item];
                     }
                     else if (item.nameBox === 'Submit EKYC') {
@@ -111,19 +101,20 @@ export class OnboardingComponent implements OnInit {
                     }
                     else if (item.nameBox === 'Sign Contract') {
                         this.signContract = [item];
-                        this.passOnboarding = [item];
                     }
                 })
             }
         })
     }
 
-    ngAfterViewInit() {}
+    ngAfterViewInit() { }
 
     ngDoCheck() {
-        this.checkPassOnboarding();
+        // this.checkCifIdOnboarding();
         this.checkAttending();
+        this.checkOnboarding();
         console.log(this.valueOnboarding);
+        // console.log(this.cifIdContract)
     }
 
     checkAttending() {
@@ -131,42 +122,24 @@ export class OnboardingComponent implements OnInit {
             this.attending.map(item => {
                 let detailCustomers = item.detailCustomers;
                 detailCustomers.map(customer => {
-                    if (!this.phoneAttending.includes(customer.phone) && customer.phone) {
-                        this.phoneAttending.push(customer.phone);
-                    }
-                    else if (!this.cifIdAttenfing.includes(customer.cifId) && customer.cifId) {
-                        this.cifIdAttenfing.push(customer.cifId);
+                    if (!this.userAttending.includes(customer.phone) && customer.phone && customer.statusCode === 400) {
+                        this.userAttending.push(customer.phone);
                     }
                 });
             });
-            this.userAttending = [...this.phoneAttending, ...this.cifIdAttenfing];
         }
     }
 
-    checkPassOnboarding() {
-        if (this.passOnboarding.length !== 0) {
-            this.passOnboarding.map(item => {
+    checkOnboarding() {
+        if (this.signContract.length !== 0) {
+            this.signContract.map(item => {
                 let detailCustomers = item.detailCustomers;
                 detailCustomers.map(customer => {
-                    if (customer.statusCode === 200) {
-                        if (!this.phonePassOnboarding.includes(customer.phone) && customer.phone) {
-                            this.phonePassOnboarding.push(customer.phone);
-                        }
-                        else if (!this.cifIdPassOnboarding.includes(customer.cifId) && customer.cifId) {
-                            this.cifIdPassOnboarding.push(customer.cifId);
-                        }
-                    } else {
-                        if (!this.phoneFailureOnboarding.includes(customer.phone) && customer.phone) {
-                            this.phoneFailureOnboarding.push(customer.phone);
-                        }
-                        else if (!this.cifIdFailureOnboarding.includes(customer.cifId) && customer.cifId) {
-                            this.cifIdFailureOnboarding.push(customer.cifId);
-                        }
+                    if (customer.statusCode === 200 && customer.cifId && !this.userPassOnboarding.includes(customer.cifId)) {
+                        this.userPassOnboarding.push(customer.cifId);
                     }
                 })
-            });
-            this.userPassOnboarding = [...this.phonePassOnboarding, ...this.cifIdPassOnboarding];
-            this.userFailureOnboarding = [...this.phoneFailureOnboarding, ...this.cifIdFailureOnboarding];
+            })
         }
     }
 
@@ -197,7 +170,7 @@ export class OnboardingComponent implements OnInit {
             }
             this.disPatchOnboarding(data, listInformation, dataDaily, null);
         }
-        else if (statusCode === 400 && data.nameBox === 'Check Cust Phone') {
+        else if (statusCode === 400 && data.step === 'Check Cust Phone') {
             let dataDaily = {
                 total: 1,
                 success: 1,
@@ -229,8 +202,8 @@ export class OnboardingComponent implements OnInit {
             })
         } else {
             if (data.phone || statusCode) listInformations.push({
-                statusCode: statusCode, 
-                phone: data.phone, 
+                statusCode: statusCode,
+                phone: data.phone,
                 url: dataDetail.url,
                 cifId: data.cifId
             });
@@ -248,8 +221,8 @@ export class OnboardingComponent implements OnInit {
                 let listInformation = [];
                 if (data.phone || dataDetail.statusCode) {
                     let dataAdd = {
-                        statusCode: dataDetail.statusCode, 
-                        phone: data.phone, 
+                        statusCode: dataDetail.statusCode,
+                        phone: data.phone,
                         url: dataDetail.url,
                         cifId: data.cifId
                     }
@@ -280,8 +253,8 @@ export class OnboardingComponent implements OnInit {
             else {
                 let listInformations = [];
                 if (data.phone || dataDetail.statusCode) listInformations.push({
-                    statusCode: dataDetail.statusCode, 
-                    phone: data.phone, 
+                    statusCode: dataDetail.statusCode,
+                    phone: data.phone,
                     url: dataDetail.url,
                     cifId: data.cifId
                 });
