@@ -3,7 +3,7 @@ import { APIService } from 'src/app/API.service';
 import { Store, State } from '@ngrx/store';
 import { AppState } from 'src/store/store.action';
 import { OnBoarding } from 'src/store/information';
-import { API, graphqlOperation } from '@aws-amplify/api';
+import { RestApiService } from 'src/api/rest-api.service';
 
 @Component({
     selector: 'app-onboarding',
@@ -29,7 +29,8 @@ export class OnboardingComponent implements OnInit {
     constructor(
         private api: APIService,
         private store: Store<AppState>,
-        private state: State<{}>
+        private state: State<{}>,
+        public restApi: RestApiService
     ) {
         // const persisted = localStorage.getItem('ONBOARDING');
         // if (persisted) {
@@ -77,9 +78,9 @@ export class OnboardingComponent implements OnInit {
 
     ngOnInit() {
         this.api.SubscribeToNewMessageListener().subscribe({
-            next: (data) => {
+            next: async (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
-
+                // console.log(JSON.parse(newData.value));
                 this.getValueOnboarding();
                 this.addValueOnboarding(this.valueOnboarding, JSON.parse(newData.value));
                 this.valueOnboarding.map((item, index) => {
@@ -110,35 +111,25 @@ export class OnboardingComponent implements OnInit {
         })
     }
 
-    ngAfterViewInit() { }
+    ngAfterViewInit() {}
 
     ngDoCheck() {
         // this.checkCifIdOnboarding();
         this.checkAttending();
         this.checkOnboarding();
         console.log(this.valueOnboarding);
-        this.pubDatatoServer();
+        // this.pubDataOnboardingtoServer();
         // console.log(this.cifIdContract)
     }
 
-    async pubDatatoServer() {
-        if (this.valueOnboarding.length !== 0) {
-            const addSampleData1 = `
-                mutation AddSampleData1($value: String!) {
-                    addSampleData1(value: $value) {
-                    value
-                    datetime
-                }
-            }`
+    // async pubDataOnboardingtoServer() {
+    //     if (this.valueOnboarding.length !== 0) {
+    //         let dataPut = `{ "index": { "_index": "monitor", "_id": "Onboarding"} }` + '\n' +
+    //                     `{ "data": "${this.addValueOnboarding.length}" }` + '\n'
+    //         await this.restApi.postItemOnboarding('monitor', dataPut);
+    //     }
+    // }
 
-            const gqlAPIServiceArguments: any = {};
-            gqlAPIServiceArguments.value = this.valueOnboarding.toString();
-
-            const dataOnboarding = await API.graphql(
-                graphqlOperation(addSampleData1, gqlAPIServiceArguments)
-            )
-        }
-    }
     checkAttending() {
         if (this.attending.length !== 0) {
             this.attending.map(item => {

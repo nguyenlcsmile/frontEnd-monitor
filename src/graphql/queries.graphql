@@ -5,9 +5,3 @@ query ListSampleData {
     datetime
   }
 }
-query ListSampleData1 {
-  listSampleData1 {
-    value
-    datetime
-  }
-}

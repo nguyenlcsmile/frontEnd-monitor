@@ -5,9 +5,3 @@ subscription SubscribeToNewMessage($filter: ModelSubscriptionTodoFilterInput) {
     datetime
   }
 }
-subscription SubscribeToNewMessage1($filter: ModelSubscriptionTodoFilterInput) {
-  subscribeToNewMessage1(filter: $filter) {
-    value
-    datetime
-  }
-}
