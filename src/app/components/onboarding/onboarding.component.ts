@@ -38,7 +38,7 @@ export class OnboardingComponent implements OnInit {
             next: async (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
                 let item = JSON.parse(newData.value);
-
+                console.log(item);
                 if (item.nameBox === 'Check Customer Phone') {
                     this.attending = [item];
                     this.checkCustPhone = [item];
