@@ -32,48 +32,53 @@ export class OnboardingComponent implements OnInit {
         private state: State<{}>,
         public restApi: RestApiService
     ) {
-        // const persisted = localStorage.getItem('ONBOARDING');
-        // if (persisted) {
-        //     this.valueOnboarding = JSON.parse(persisted);
-        //     this.valueOnboarding.map((item, index) => {
-        //         this.store.dispatch({
-        //             type: 'OnBoarding',
-        //             index: null,
-        //             payload: <OnBoarding>{
-        //                 nameBox: item.nameBox,
-        //                 detailCustomers: item.detailCustomers,
-        //                 daily: item.daily
-        //             }
-        //         });
+        const persisted = localStorage.getItem('ONBOARDING');
+        
+        if (persisted) {
+            this.valueOnboarding = JSON.parse(persisted);
+            this.valueOnboarding.map((item, index) => {
+                this.store.dispatch({
+                    type: 'OnBoarding',
+                    index: null,
+                    payload: <OnBoarding>{
+                        nameBox: item.nameBox,
+                        detailCustomers: item.detailCustomers,
+                        daily: item.daily
+                    }
+                });
 
-        //         if (item.nameBox === 'Check Customer Phone') {
-        //             this.checkCustPhone = [item];
-        //             this.color = true;
-        //         }
-        //         else if (item.nameBox === 'Submit EKYC') {
-        //             this.submitEKYC = [item];
-        //             this.color = true;
-        //         }
-        //         else if (item.nameBox === 'Check KYC Status') {
-        //             this.checkKYCStatus = [item];
-        //             this.color = true;
-        //         }
-        //         else if (item.nameBox === 'Video Statement') {
-        //             this.videoStatement = [item];
-        //             this.color = true;
-        //         }
-        //         else if (item.nameBox === 'Get Contract') {
-        //             this.getContract = [item];
-        //             this.color = true;
-        //         }
-        //         else if (item.nameBox === 'Sign Contract') {
-        //             this.signContract = [item];
-        //             this.color = true;
-        //         }
-        //     })
-        // } else {
-        //     this.getValueOnboarding();
-        // }
+                if (item.nameBox === 'Check Customer Phone') {
+                    this.checkCustPhone = [item];
+                }
+                else if (item.nameBox === 'Submit EKYC') {
+                    this.submitEKYC = [item];
+                }
+                else if (item.nameBox === 'Check KYC Status') {
+                    this.checkKYCStatus = [item];
+                }
+                else if (item.nameBox === 'Video Statement') {
+                    this.videoStatement = [item];
+                }
+                else if (item.nameBox === 'Get Contract') {
+                    this.getContract = [item];
+                }
+                else if (item.nameBox === 'Sign Contract') {
+                    this.signContract = [item];
+                }
+            })
+        } else {
+            this.getValueOnboarding();
+        }
+
+        const attending = localStorage.getItem('ATTENDING');
+        if (attending) {
+            this.attending = JSON.parse(attending);
+        }
+
+        const passOnboarding = localStorage.getItem('PASSONBOARDING');
+        if (passOnboarding) {
+            this.passOnboarding = JSON.parse(passOnboarding);
+        }
     }
 
     ngOnInit() {
@@ -117,19 +122,19 @@ export class OnboardingComponent implements OnInit {
         // this.checkCifIdOnboarding();
         this.checkAttending();
         this.checkOnboarding();
+        this.saveLocalStage();
         console.log(this.valueOnboarding);
         // this.pubDataOnboardingtoServer();
         // console.log(this.cifIdContract)
     }
 
-    // async pubDataOnboardingtoServer() {
-    //     if (this.valueOnboarding.length !== 0) {
-    //         let dataPut = `{ "index": { "_index": "monitor", "_id": "Onboarding"} }` + '\n' +
-    //                     `{ "data": "${this.addValueOnboarding.length}" }` + '\n'
-    //         await this.restApi.postItemOnboarding('monitor', dataPut);
-    //     }
-    // }
-
+    saveLocalStage() {
+        if (this.valueOnboarding.length !== 0) {
+            localStorage.setItem("ONBOARDING", JSON.stringify(this.valueOnboarding));
+            localStorage.setItem("ATTENDING", JSON.stringify(this.attending));
+            localStorage.setItem("PASSONBOARDING", JSON.stringify(this.passOnboarding));
+        }
+    }
     checkAttending() {
         if (this.attending.length !== 0) {
             this.attending.map(item => {
