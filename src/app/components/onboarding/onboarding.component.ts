@@ -77,7 +77,7 @@ export class OnboardingComponent implements OnInit {
 
         const passOnboarding = localStorage.getItem('PASSONBOARDING');
         if (passOnboarding) {
-            this.passOnboarding = JSON.parse(passOnboarding);
+            this.userPassOnboarding = JSON.parse(passOnboarding);
         }
     }
 
@@ -131,9 +131,9 @@ export class OnboardingComponent implements OnInit {
     saveLocalStage() {
         if (this.valueOnboarding.length !== 0) {
             localStorage.setItem("ONBOARDING", JSON.stringify(this.valueOnboarding));
-            localStorage.setItem("ATTENDING", JSON.stringify(this.attending));
-            localStorage.setItem("PASSONBOARDING", JSON.stringify(this.passOnboarding));
         }
+        localStorage.setItem("ATTENDING", JSON.stringify(this.attending));
+        localStorage.setItem("PASSONBOARDING", JSON.stringify(this.userPassOnboarding));
     }
     checkAttending() {
         if (this.attending.length !== 0) {
