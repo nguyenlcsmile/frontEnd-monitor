@@ -31,14 +31,14 @@ export class OnboardingComponent implements OnInit {
         private store: Store<AppState>,
         private state: State<{}>,
         public restApi: RestApiService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.api.SubscribeToNewMessageListener().subscribe({
             next: async (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
                 let item = JSON.parse(newData.value);
-                // console.log(item);
+
                 if (item.nameBox === 'Check Customer Phone') {
                     this.attending = [item];
                     this.checkCustPhone = [item];
@@ -65,7 +65,7 @@ export class OnboardingComponent implements OnInit {
         })
     }
 
-    ngAfterViewInit() {}
+    ngAfterViewInit() { }
 
     ngDoCheck() {
         // this.checkCifIdOnboarding();
