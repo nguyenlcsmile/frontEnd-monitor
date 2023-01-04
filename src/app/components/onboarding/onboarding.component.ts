@@ -3,7 +3,7 @@ import { APIService } from 'src/app/API.service';
 import { Store, State } from '@ngrx/store';
 import { AppState } from 'src/store/store.action';
 import { OnBoarding } from 'src/store/information';
-import { typeofExpr } from '@angular/compiler/src/output/output_ast';
+import { API, graphqlOperation } from '@aws-amplify/api';
 
 @Component({
     selector: 'app-onboarding',
@@ -18,6 +18,7 @@ export class OnboardingComponent implements OnInit {
     submitEKYC: OnBoarding[] = [];
     checkKYCStatus: OnBoarding[] = [];
     videoStatement: OnBoarding[] = [];
+    faceMatch: OnBoarding[] = [];
     signContract: OnBoarding[] = [];
     getContract: OnBoarding[] = [];
     attending: OnBoarding[] = [];
@@ -75,7 +76,6 @@ export class OnboardingComponent implements OnInit {
     }
 
     ngOnInit() {
-        // console.log(this.valueOnboarding);
         this.api.SubscribeToNewMessageListener().subscribe({
             next: (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
@@ -96,6 +96,9 @@ export class OnboardingComponent implements OnInit {
                     else if (item.nameBox === 'Video Statement') {
                         this.videoStatement = [item];
                     }
+                    else if (item.nameBox === 'Face Match') {
+                        this.faceMatch = [item];
+                    }
                     else if (item.nameBox === 'Get Contract') {
                         this.getContract = [item];
                     }
@@ -114,9 +117,28 @@ export class OnboardingComponent implements OnInit {
         this.checkAttending();
         this.checkOnboarding();
         console.log(this.valueOnboarding);
+        this.pubDatatoServer();
         // console.log(this.cifIdContract)
     }
 
+    async pubDatatoServer() {
+        if (this.valueOnboarding.length !== 0) {
+            const addSampleData1 = `
+                mutation AddSampleData1($value: String!) {
+                    addSampleData1(value: $value) {
+                    value
+                    datetime
+                }
+            }`
+
+            const gqlAPIServiceArguments: any = {};
+            gqlAPIServiceArguments.value = this.valueOnboarding.toString();
+
+            const dataOnboarding = await API.graphql(
+                graphqlOperation(addSampleData1, gqlAPIServiceArguments)
+            )
+        }
+    }
     checkAttending() {
         if (this.attending.length !== 0) {
             this.attending.map(item => {
@@ -219,7 +241,7 @@ export class OnboardingComponent implements OnInit {
                 let index = nameBoxs.indexOf(data.step);
                 let dataDaily = valueDaily[index];
                 let listInformation = [];
-                if (data.phone || dataDetail.statusCode) {
+                if (data.phone || dataDetail.statusCode || data.cifId) {
                     let dataAdd = {
                         statusCode: dataDetail.statusCode,
                         phone: data.phone,
@@ -227,7 +249,7 @@ export class OnboardingComponent implements OnInit {
                         cifId: data.cifId
                     }
                     let checkExist = listInformations[index].some(item => {
-                        if (item.phone === data.phone && item.cifId === data.cifId) {
+                        if (item.phone === data.phone && item.cifId === data.cifId && data.dataDetail.url === item.url) {
                             return true;
                         }
                         return false;

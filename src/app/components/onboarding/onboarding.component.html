@@ -214,7 +214,7 @@
                         <tr>
                           <th scope="row" style="padding: 1px;">Daily</th>
                           <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
-                          <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">{{videoStatement[0].detailCustomers.length}}</td>
+                          <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">0</td>
                           <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
                           <td *ngIf="videoStatement.length !== 0" style="padding: 1px;">{{videoStatement[0].daily.success}}</td>
                           <td *ngIf="videoStatement.length === 0" style="padding: 1px;">0</td>
@@ -240,6 +240,51 @@
             </div>
           </div>
           <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">5</span>
+            <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">FACE MATCH</span>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="table-responsive">
+                    <table class="table table-xs text-center">
+                      <thead>
+                        <tr>
+                          <th scope="col" style="padding: 1px;"></th>
+                          <th scope="col" style="padding: 1px;">Total</th>
+                          <th scope="col" style="padding: 1px;">Success</th>
+                          <th scope="col" style="padding: 1px;">Failure</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row" style="padding: 1px;">Daily</th>
+                          <td *ngIf="faceMatch.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="faceMatch.length !== 0" style="padding: 1px;">{{faceMatch[0].daily.length}}</td>
+                          <td *ngIf="faceMatch.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="faceMatch.length !== 0" style="padding: 1px;">{{faceMatch[0].daily.success}}</td>
+                          <td *ngIf="faceMatch.length === 0" style="padding: 1px;">0</td>
+                          <td *ngIf="faceMatch.length !== 0" style="padding: 1px;">{{faceMatch[0].daily.failure}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="padding: 1px;">Week</th>
+                          <td style="padding: 1px;">100</td>
+                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">50</td>
+                        </tr>
+                        <tr>
+                          <th scope="row" style="padding: 1px;">Month</th>
+                          <td style="padding: 1px;">100</td>
+                          <td style="padding: 1px;">50</td>
+                          <td style="padding: 1px;">50</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">6</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">GET CONTRACT</span>
             </div>
             <div class="row">
@@ -284,7 +329,7 @@
               </div>
             </div>
           </div>
-          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">6</span>
+          <div class="u-step col-sm-3" style="padding: 12px 2px;"><span class="u-step-number">7</span>
             <div class="u-step-desc"><span class="u-step-title" style="font-size: 16px;">SIGN CONTRACT</span>
             </div>
             <div class="row">

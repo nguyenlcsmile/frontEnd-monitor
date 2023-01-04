@@ -11,10 +11,17 @@ export interface SubscriptionResponse<T> {
 
 export type __SubscriptionContainer = {
   subscribeToNewMessage: SubscribeToNewMessageSubscription;
+  subscribeToNewMessage1: SubscribeToNewMessage1Subscription;
 };
 
 export type SampleData = {
   __typename: "SampleData";
+  value: string;
+  datetime?: string | null;
+};
+
+export type SampleData1 = {
+  __typename: "SampleData1";
   value: string;
   datetime?: string | null;
 };
@@ -63,14 +70,32 @@ export type AddSampleDataMutation = {
   datetime?: string | null;
 };
 
+export type AddSampleData1Mutation = {
+  __typename: "SampleData1";
+  value: string;
+  datetime?: string | null;
+};
+
 export type ListSampleDataQuery = {
   __typename: "SampleData";
   value: string;
   datetime?: string | null;
 };
 
+export type ListSampleData1Query = {
+  __typename: "SampleData1";
+  value: string;
+  datetime?: string | null;
+};
+
 export type SubscribeToNewMessageSubscription = {
   __typename: "SampleData";
+  value: string;
+  datetime?: string | null;
+};
+
+export type SubscribeToNewMessage1Subscription = {
+  __typename: "SampleData1";
   value: string;
   datetime?: string | null;
 };
@@ -95,6 +120,22 @@ export class APIService {
     )) as any;
     return <AddSampleDataMutation>response.data.addSampleData;
   }
+  async AddSampleData1(value: string): Promise<AddSampleData1Mutation> {
+    const statement = `mutation AddSampleData1($value: String!) {
+        addSampleData1(value: $value) {
+          __typename
+          value
+          datetime
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      value
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <AddSampleData1Mutation>response.data.addSampleData1;
+  }
   async ListSampleData(): Promise<Array<ListSampleDataQuery>> {
     const statement = `query ListSampleData {
         listSampleData {
@@ -105,6 +146,17 @@ export class APIService {
       }`;
     const response = (await API.graphql(graphqlOperation(statement))) as any;
     return <Array<ListSampleDataQuery>>response.data.listSampleData;
+  }
+  async ListSampleData1(): Promise<Array<ListSampleData1Query>> {
+    const statement = `query ListSampleData1 {
+        listSampleData1 {
+          __typename
+          value
+          datetime
+        }
+      }`;
+    const response = (await API.graphql(graphqlOperation(statement))) as any;
+    return <Array<ListSampleData1Query>>response.data.listSampleData1;
   }
   SubscribeToNewMessageListener(
     filter?: ModelSubscriptionTodoFilterInput
@@ -127,6 +179,33 @@ export class APIService {
     ) as Observable<
       SubscriptionResponse<
         Pick<__SubscriptionContainer, "subscribeToNewMessage">
+      >
+    >;
+  }
+
+  SubscribeToNewMessage1Listener(
+    filter?: ModelSubscriptionTodoFilterInput
+  ): Observable<
+    SubscriptionResponse<
+      Pick<__SubscriptionContainer, "subscribeToNewMessage1">
+    >
+  > {
+    const statement = `subscription SubscribeToNewMessage1($filter: ModelSubscriptionTodoFilterInput) {
+        subscribeToNewMessage1(filter: $filter) {
+          __typename
+          value
+          datetime
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<
+        Pick<__SubscriptionContainer, "subscribeToNewMessage1">
       >
     >;
   }

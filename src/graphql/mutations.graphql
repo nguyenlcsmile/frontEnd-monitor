@@ -5,3 +5,9 @@ mutation AddSampleData($value: String!) {
     datetime
   }
 }
+mutation AddSampleData1($value: String!) {
+  addSampleData1(value: $value) {
+    value
+    datetime
+  }
+}
