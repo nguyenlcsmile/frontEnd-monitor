@@ -28,7 +28,16 @@
                         <td style="padding: 1px;">E-STATEMENT</td>
                       </tr>
                       <tr>
-                        <td style="padding: 1px;">REQUEST E-CONTRACT</td>
+                        <td style="padding: 1px;">E-CONTRACT</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 1px;">CREATE-SIGNATURE</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 1px;">TERMINATE TD ACOUNT</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 1px;">CASH WITH DRAWAL</td>
                       </tr>
                     </tbody>
                   </table>
@@ -48,7 +57,85 @@
                     <thead>
                       <tr>
                         <!-- <th scope="col" style="padding: 1px;"></th> -->
-                        <th scope="col" style="padding: 1px;">Total</th>
+                        <th scope="col" style="padding: 1px;">Total_Cust</th>
+                        <th scope="col" style="padding: 1px;">Success</th>
+                        <th scope="col" style="padding: 1px;">Failure</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Daily</th> -->
+                        <td *ngIf="issueCard.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="issueCard.length !== 0" style="padding: 1px;">{{issueCard[0].detailCustomers.length}}</td>
+                        <td *ngIf="issueCard.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="issueCard.length !== 0" style="padding: 1px;">{{issueCard[0].daily.success}}</td>
+                        <td *ngIf="issueCard.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="issueCard.length !== 0" style="padding: 1px;">{{issueCard[0].daily.failure}}</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Week</th> -->
+                        <td *ngIf="EStatement.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EStatement.length !== 0" style="padding: 1px;">{{EStatement[0].detailCustomers.length}}</td>
+                        <td *ngIf="EStatement.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EStatement.length !== 0" style="padding: 1px;">{{EStatement[0].daily.success}}</td>
+                        <td *ngIf="EStatement.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EStatement.length !== 0" style="padding: 1px;">{{EStatement[0].daily.failure}}</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td *ngIf="EContract.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EContract.length !== 0" style="padding: 1px;">{{EContract[0].detailCustomers.length}}</td>
+                        <td *ngIf="EContract.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EContract.length !== 0" style="padding: 1px;">{{EContract[0].daily.success}}</td>
+                        <td *ngIf="EContract.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="EContract.length !== 0" style="padding: 1px;">{{EContract[0].daily.failure}}</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td *ngIf="createSignature.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="createSignature.length !== 0" style="padding: 1px;">{{createSignature[0].detailCustomers.length}}</td>
+                        <td *ngIf="createSignature.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="createSignature.length !== 0" style="padding: 1px;">{{createSignature[0].daily.success}}</td>
+                        <td *ngIf="createSignature.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="createSignature.length !== 0" style="padding: 1px;">{{createSignature[0].daily.failure}}</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td *ngIf="TerminateTDAcount.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="TerminateTDAcount.length !== 0" style="padding: 1px;">{{TerminateTDAcount[0].detailCustomers.length}}</td>
+                        <td *ngIf="TerminateTDAcount.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="TerminateTDAcount.length !== 0" style="padding: 1px;">{{TerminateTDAcount[0].daily.success}}</td>
+                        <td *ngIf="TerminateTDAcount.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="TerminateTDAcount.length !== 0" style="padding: 1px;">{{TerminateTDAcount[0].daily.failure}}</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td *ngIf="CashwithDrawal.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="CashwithDrawal.length !== 0" style="padding: 1px;">{{CashwithDrawal[0].detailCustomers.length}}</td>
+                        <td *ngIf="CashwithDrawal.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="CashwithDrawal.length !== 0" style="padding: 1px;">{{CashwithDrawal[0].daily.success}}</td>
+                        <td *ngIf="CashwithDrawal.length === 0" style="padding: 1px;">0</td>
+                        <td *ngIf="CashwithDrawal.length !== 0" style="padding: 1px;">{{CashwithDrawal[0].daily.failure}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-step col-sm-3 text-center" style="padding: 0px 0px;">
+          <div class="u-step-desc text-center"><span class="u-step-title" style="font-size: 16px;">Week</span>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="table-responsive">
+                  <table class="table table-xs">
+                    <thead>
+                      <tr>
+                        <!-- <th scope="col" style="padding: 1px;"></th> -->
+                        <th scope="col" style="padding: 1px;">Total_Cust</th>
                         <th scope="col" style="padding: 1px;">Success</th>
                         <th scope="col" style="padding: 1px;">Failure</th>
                       </tr>
@@ -72,38 +159,14 @@
                         <td style="padding: 1px;">50</td>
                         <td style="padding: 1px;">50</td>
                       </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="u-step col-sm-3 text-center" style="padding: 0px 0px;">
-          <div class="u-step-desc text-center"><span class="u-step-title" style="font-size: 16px;">Week</span>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="table-responsive">
-                  <table class="table table-xs">
-                    <thead>
                       <tr>
-                        <!-- <th scope="col" style="padding: 1px;"></th> -->
-                        <th scope="col" style="padding: 1px;">Total</th>
-                        <th scope="col" style="padding: 1px;">Success</th>
-                        <th scope="col" style="padding: 1px;">Failure</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <!-- <th scope="row" style="padding: 1px;">Daily</th> -->
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
                         <td style="padding: 1px;">100</td>
                         <td style="padding: 1px;">50</td>
                         <td style="padding: 1px;">50</td>
                       </tr>
                       <tr>
-                        <!-- <th scope="row" style="padding: 1px;">Week</th> -->
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
                         <td style="padding: 1px;">100</td>
                         <td style="padding: 1px;">50</td>
                         <td style="padding: 1px;">50</td>
@@ -132,7 +195,7 @@
                     <thead>
                       <tr>
                         <!-- <th scope="col" style="padding: 1px;"></th> -->
-                        <th scope="col" style="padding: 1px;">Total</th>
+                        <th scope="col" style="padding: 1px;">Total_Cust</th>
                         <th scope="col" style="padding: 1px;">Success</th>
                         <th scope="col" style="padding: 1px;">Failure</th>
                       </tr>
@@ -146,6 +209,24 @@
                       </tr>
                       <tr>
                         <!-- <th scope="row" style="padding: 1px;">Week</th> -->
+                        <td style="padding: 1px;">100</td>
+                        <td style="padding: 1px;">50</td>
+                        <td style="padding: 1px;">50</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td style="padding: 1px;">100</td>
+                        <td style="padding: 1px;">50</td>
+                        <td style="padding: 1px;">50</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
+                        <td style="padding: 1px;">100</td>
+                        <td style="padding: 1px;">50</td>
+                        <td style="padding: 1px;">50</td>
+                      </tr>
+                      <tr>
+                        <!-- <th scope="row" style="padding: 1px;">Month</th> -->
                         <td style="padding: 1px;">100</td>
                         <td style="padding: 1px;">50</td>
                         <td style="padding: 1px;">50</td>

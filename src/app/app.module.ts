@@ -26,7 +26,9 @@ import { addInformationReducer } from 'src/store/store.reducer';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ inforBoxOnboarding: addInformationReducer }),
+    StoreModule.forRoot(
+      { inforBoxOnboarding: addInformationReducer }
+    ),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
     }),

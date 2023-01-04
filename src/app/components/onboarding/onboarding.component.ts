@@ -32,8 +32,8 @@ export class OnboardingComponent implements OnInit {
         private state: State<{}>,
         public restApi: RestApiService
     ) {
-        const persisted = localStorage.getItem('ONBOARDING');
-        
+        const persisted = localStorage.getItem('MONITOR');
+
         if (persisted) {
             this.valueOnboarding = JSON.parse(persisted);
             this.valueOnboarding.map((item, index) => {
@@ -58,6 +58,9 @@ export class OnboardingComponent implements OnInit {
                 }
                 else if (item.nameBox === 'Video Statement') {
                     this.videoStatement = [item];
+                }
+                else if (item.nameBox === 'Face Match') {
+                    this.faceMatch = [item];
                 }
                 else if (item.nameBox === 'Get Contract') {
                     this.getContract = [item];
@@ -116,7 +119,7 @@ export class OnboardingComponent implements OnInit {
         })
     }
 
-    ngAfterViewInit() {}
+    ngAfterViewInit() { }
 
     ngDoCheck() {
         // this.checkCifIdOnboarding();
@@ -130,11 +133,12 @@ export class OnboardingComponent implements OnInit {
 
     saveLocalStage() {
         if (this.valueOnboarding.length !== 0) {
-            localStorage.setItem("ONBOARDING", JSON.stringify(this.valueOnboarding));
+            localStorage.setItem("MONITOR", JSON.stringify(this.valueOnboarding));
+            localStorage.setItem("ATTENDING", JSON.stringify(this.attending));
+            localStorage.setItem("PASSONBOARDING", JSON.stringify(this.userPassOnboarding));
         }
-        localStorage.setItem("ATTENDING", JSON.stringify(this.attending));
-        localStorage.setItem("PASSONBOARDING", JSON.stringify(this.userPassOnboarding));
     }
+
     checkAttending() {
         if (this.attending.length !== 0) {
             this.attending.map(item => {
@@ -188,7 +192,7 @@ export class OnboardingComponent implements OnInit {
             }
             this.disPatchOnboarding(data, listInformation, dataDaily, null);
         }
-        else if (statusCode === 400 && data.step === 'Check Cust Phone') {
+        else if (statusCode === 400 && data.step === 'Check Customer Phone' && data.dataDetail.errorCode === 'NE01') {
             let dataDaily = {
                 total: 1,
                 success: 1,
@@ -253,7 +257,7 @@ export class OnboardingComponent implements OnInit {
                     if (checkExist === false) listInformation = [...listInformations[index], dataAdd];
                     else listInformation = [...listInformations[index]];
                 }
-                if (statusCode === 200 || (statusCode === 400 && data.step === 'Check Customer Phone')) {
+                if (statusCode === 200 || (statusCode === 400 && data.step === 'Check Customer Phone' && dataDetail.errorCode === 'NE01')) {
                     dataDaily = {
                         total: dataDaily.total + 1,
                         success: dataDaily.success + 1,
