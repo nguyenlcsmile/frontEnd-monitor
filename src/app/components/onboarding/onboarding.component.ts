@@ -86,31 +86,33 @@ export class OnboardingComponent implements OnInit {
             next: async (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
                 // console.log(JSON.parse(newData.value));
-                this.getValueOnboarding();
-                this.addValueOnboarding(this.valueOnboarding, JSON.parse(newData.value));
-                this.valueOnboarding.map((item, index) => {
-                    if (item.nameBox === 'Check Customer Phone') {
-                        this.attending = [item];
-                        this.checkCustPhone = [item];
-                    }
-                    else if (item.nameBox === 'Submit EKYC') {
-                        this.submitEKYC = [item];
-                    }
-                    else if (item.nameBox === 'Check KYC Status') {
-                        this.checkKYCStatus = [item];
-                    }
-                    else if (item.nameBox === 'Video Statement') {
-                        this.videoStatement = [item];
-                    }
-                    else if (item.nameBox === 'Face Match') {
-                        this.faceMatch = [item];
-                    }
-                    else if (item.nameBox === 'Get Contract') {
-                        this.getContract = [item];
-                    }
-                    else if (item.nameBox === 'Sign Contract') {
-                        this.signContract = [item];
-                    }
+                // this.getValueOnboarding();
+                JSON.parse(newData.value).map(item => {
+                    this.addValueOnboarding(this.valueOnboarding, item);
+                    this.valueOnboarding.map((item, index) => {
+                        if (item.nameBox === 'Check Customer Phone') {
+                            this.attending = [item];
+                            this.checkCustPhone = [item];
+                        }
+                        else if (item.nameBox === 'Submit EKYC') {
+                            this.submitEKYC = [item];
+                        }
+                        else if (item.nameBox === 'Check KYC Status') {
+                            this.checkKYCStatus = [item];
+                        }
+                        else if (item.nameBox === 'Video Statement') {
+                            this.videoStatement = [item];
+                        }
+                        else if (item.nameBox === 'Face Match') {
+                            this.faceMatch = [item];
+                        }
+                        else if (item.nameBox === 'Get Contract') {
+                            this.getContract = [item];
+                        }
+                        else if (item.nameBox === 'Sign Contract') {
+                            this.signContract = [item];
+                        }
+                    })
                 })
             }
         })
