@@ -182,7 +182,7 @@ export class OnboardingComponent implements OnInit {
                     this.disPatchMonitor(item, this.dataWeek, this.dataMonth);
                     this.updateMonitor = this.valueMonitor.slice(-1)[0];
                     console.log(">>>Check Update:", this.updateMonitor);
-                    // localStorage.setItem("MONITOR", JSON.stringify(this.updateMonitor));
+                    localStorage.setItem("MONITOR", JSON.stringify(this.updateMonitor));
                 }
             }
         })
