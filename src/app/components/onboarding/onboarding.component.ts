@@ -174,14 +174,14 @@ export class OnboardingComponent implements OnInit {
             next: async (data) => {
                 let newData = data.value.data.subscribeToNewMessage;
                 let item = JSON.parse(newData.value);
-                console.log(">>>Check Item:", item);
+                console.log(">>>Check data receive:", item);
                 this.getValueMonitor();
                 if (item) {
                     // console.log(item);
                     this.dataDaily = item;
                     this.disPatchMonitor(item, this.dataWeek, this.dataMonth);
                     this.updateMonitor = this.valueMonitor.slice(-1)[0];
-                    console.log(">>>Check Update:", this.updateMonitor);
+                    console.log(">>>Check data update:", this.updateMonitor);
                     localStorage.setItem("MONITOR", JSON.stringify(this.updateMonitor));
                 }
             }
